@@ -33,4 +33,12 @@ const pairedNumbers = numbers.filter((num) => {
 });
 console.log(pairedNumbers);
  
+// Task 3  
 
+const prices = [100, 200, 300, 400, 500];
+let percent = 10
+let newNumbers = prices.map((x) => x + (x * percent) / 100 ); 
+
+console.log(newNumbers);
+ 
+// Task 4  
