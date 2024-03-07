@@ -64,12 +64,91 @@ const newSentences = sentences.map((sentence) => {
     return words[0];
 });
 
-console.log(newSentences);  
+console.log(newSentences);
 
 // Task 7
-
 const anotherSentences = ["JavaScript цікавий", "Масиви це корисно", "Вивчайте програмування щодня"];
+const newString = anotherSentences.join(' ');
+const splitNewString = newString.split(' ');
+console.log(splitNewString.length)
 
- const oneString = anotherSentences.join((newWords) => {
-    return newWords  
-})
+// Task 8
+
+let orders = [];
+
+let order1 = {
+    table: 1,
+    dishes: [
+        { name: "Кава", price: 30 },
+        { name: "Чізкейк", price: 50 }
+    ],
+    status: "в обробці"
+};
+
+let order2 = {
+    table: 2,
+    dishes: [
+        { name: "Лате", price: 40 },
+        { name: "Тірамісу", price: 60 }
+    ],
+    status: "готується"
+};
+
+let order3 = {
+    table: 3,
+    dishes: [
+        { name: "Молочний коктейль", price: 50 },
+        { name: "Шуба", price: 60 }
+    ],
+    status: "в обробці"
+};
+
+// ----------------------------------------------------
+
+function addOrder(orders, order) {
+    orders.push(order);
+    return order;
+}
+addOrder(orders, order1)
+addOrder(orders, order2)
+addOrder(orders, order3)
+console.log(orders)
+
+// ----------------------------------------------------
+
+function getTotalAmount(orders, tableNumber) {
+    let totalAmount = 0;
+    orders.forEach((order => {
+        if (order.table === tableNumber) {
+            order.dishes.forEach(dish => {
+                totalAmount += dish.price;
+            });
+        }
+    }));
+    return totalAmount;
+}
+console.log(getTotalAmount(orders, 1));
+
+// ----------------------------------------------------
+ 
+function changeOrderStatus(orders, tableNumber, currentStatus) {
+    orders.forEach(order => {
+        if (order.table === tableNumber) {
+            order.status = currentStatus;
+        }
+    });
+}
+changeOrderStatus(orders, 1, "готово");
+console.log(orders[0].status);
+
+// ----------------------------------------------------
+ 
+function cancelOrder(orders, tableNumber) {
+    let orderToCancel = orders.findIndex((order) => (order.table === tableNumber))
+    orders.splice(orderToCancel, 1)
+    return console.log(`Заказ для столика: ${tableNumber} отменен`)
+
+}
+
+cancelOrder(orders, 1)
+console.log(orders)
