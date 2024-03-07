@@ -65,3 +65,11 @@ const newSentences = sentences.map((sentence) => {
 });
 
 console.log(newSentences);  
+
+// Task 7
+
+const anotherSentences = ["JavaScript цікавий", "Масиви це корисно", "Вивчайте програмування щодня"];
+
+ const oneString = anotherSentences.join((newWords) => {
+    return newWords  
+})
